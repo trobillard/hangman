@@ -10,6 +10,11 @@
 
 //VAR
 var choices = ["P","R","Q"];
+var wordList = ["Viking", "Peaky Blinder", "Your Honor", "Stranger things", "Lupin"];
+var targetWord = ""
+
+//LETTERS
+const letters = "abcdefghijklmnopqrstuvwxyz"
 
 //GAME START
 function start() {
@@ -29,3 +34,9 @@ function start() {
     }
     
     start();
+
+    function newWord () {
+        targetWord = wordList[Math.random() * wordList.length];
+    }
+
+    newWord ()
