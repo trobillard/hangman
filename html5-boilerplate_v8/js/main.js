@@ -13,19 +13,19 @@ var choices = ["P","R","Q"];
 
 //GAME START
 function start() {
-let playerChoice = prompt ("What would you like to do ? \nSelect one of those option. \n P=Play \n R=Rules \n Q=Quit" ).toUpperCase();
-if(playerChoice === "P") {
-    alert ("Game Start");
-}
-else if(playerChoice === "R") {
-    alert ("Rules: \n* Play individually or in groups. \n* Select a letter of the alphabet. \n* If the letter is contained in the word you don't loose any point. \n* if not you loose a point. \n* The game continues until : you have point or the word is guessed. \n* You have only 7 points. \n* So good luck");
-}
-else if(playerChoice === "Q") {
-    alert ("Quit");
-}
-else {
-    return (start);
-}
-}
-
-start();
+    let playerChoice = prompt ("What would you like to do ? \nSelect one of those option. \n P=Play \n R=Rules \n Q=Quit" ).toUpperCase();
+    if(playerChoice === "P") {
+        alert ("Game Start");
+    }
+    else if(playerChoice === "R") {
+        alert ("Rules: \n* Play individually or in groups. \n* Select a letter of the alphabet. \n* If the letter is contained in the word you don't loose any point. \n* if not you loose a point. \n* The game continues until : you have point or the word is guessed. \n* You have only 7 points. \n* So good luck");
+    }
+    else if(playerChoice === "Q") {
+        window.close();
+    }
+    else {
+        return (start());
+    }
+    }
+    
+    start();
