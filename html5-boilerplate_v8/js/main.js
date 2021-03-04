@@ -10,13 +10,13 @@
 
 //VAR
 var choices = ["P","R","Q"];
-var wordList = ["Viking", "Peaky Blinder", "Your Honor", "Stranger things", "Lupin"];
+var wordList = ["viking", "peaky blinder", "your honor", "stranger things", "lupin"];
 var targetWord = ""
-
+var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 //LETTERS
 const letters = "abcdefghijklmnopqrstuvwxyz"
 
-//GAME START
+//FUNCTIONS
 function start() {
     let playerChoice = prompt ("What would you like to do ? \nSelect one of those option. \n P=Play \n R=Rules \n Q=Quit" ).toUpperCase();
     if(playerChoice === "P") {
@@ -33,10 +33,27 @@ function start() {
     }
     }
     
+    function generateWord() {
+        // Generate a random number bewteen 0 and 2 matching an index in the choices array
+        let randomWord = Math.floor(Math.random() * (wordList.length));
+        return wordList[randomWord];
+      }
+
+
+    //GAME
     start();
+    generateWord();
 
-    function newWord () {
-        targetWord = wordList[Math.random() * wordList.length];
-    }
+    
 
-    newWord ()
+
+    function playerLetter() {
+        do {
+          var letter = prompt("Choose a letter ".toLowerCase());
+        }
+        while (!lettes.includes(letter));
+        return letter;
+      }
+      playerLetter()
+
+    
