@@ -1,7 +1,7 @@
 //TODO
 //-Quand l’utilisateur arrive sur la page index.html le jeu démarre
-//-Par défaut l’ordinateur choisit un mot au hasard dans une liste et affiche au joueur le mot à deviner 
-//sous forme de underscores.
+//-Par défaut l’ordinateur choisit un mot au hasard dans une liste et 
+// affiche au joueur le mot à deviner sous forme de underscores.
 //-Le joueur peut rentrer une lettre
 //-L’ordinateur vérifie qu’une seule lettre a été rentrée et si cette lettre est présente dans le mot, 
 //remplace tous les underscores correspondant par la lettre avant de d’afficher à nouveau le mot. 
@@ -12,11 +12,13 @@
 var choices = ["P","R","Q"];
 var wordList = ["viking", "peaky blinder", "your honor", "stranger things", "lupin"];
 var targetWord = ""
+var answer = [];
 var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 //LETTERS
 const letters = "abcdefghijklmnopqrstuvwxyz"
 
 //FUNCTIONS
+
 function start() {
     let playerChoice = prompt ("What would you like to do ? \nSelect one of those option. \n P=Play \n R=Rules \n Q=Quit" ).toUpperCase();
     if(playerChoice === "P") {
@@ -32,9 +34,9 @@ function start() {
         return (start());
     }
     }
-    
+//-Par défaut l’ordinateur choisit un mot au hasard dans une liste
     function generateWord() {
-        // Generate a random number bewteen 0 and 2 matching an index in the choices array
+        // Generate a random word from the wordList
         let randomWord = Math.floor(Math.random() * (wordList.length));
         return wordList[randomWord];
       }
@@ -43,10 +45,58 @@ function start() {
     //GAME
     start();
     generateWord();
+    //Answer Array
+    for (var i=0; i<randomWord.length; i++) {
+        answer[i] = "_";
+    }
 
+    var remainLetters = randomWord.length;
     
+    //The Loop
+    while (remainLetters > 0){
+        //game code
+        //Player progress
+        //Player input
+        //update
+    }
+
+    //Player progress 
+    alert(answer.join(" "));
+
+    //Player input
+    var guess = prompt("Pick a letter if you dare or leave");
+    if (guess === null) {
+        break;
+    }
+    else if (guess.length !==1) {
+        alert("So you don't understand? PICK A LETTER ONLY");
+    }
+    else{
+        for (var j =0; j< randomWord.length; j++){
+            if (randomWord[j]===guess) {
+                answer [j] = guess;
+                remainLetters--;
+            }
+        }
+    }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-Le joueur peut rentrer une lettre
     function playerLetter() {
         do {
           var letter = prompt("Choose a letter ".toLowerCase());
