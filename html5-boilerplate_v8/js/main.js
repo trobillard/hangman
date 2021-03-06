@@ -1,12 +1,13 @@
-// Create an array of words
+// Create the VAR
 var choices = ["P", "R", "Q"];
-var words = ["viking", "peaky blinder", "your honor", "stranger things", "lupin"];
+var words = ["viking", "peaky blinder", "your honor", "stranger things", "lupin", "ghotam", "ragnarok", "norsemen", "titans", "the rain", "the last kingdom", "family business", " spartacus", "sex education", "riverdale", "you", "the walking dead", "snow piercer", "outlander", "the witcher", "the sinner", "umbrella academy", "cobra kai", "lucifer", "homeland", "american horror story"];
+var word = words[Math.floor(Math.random() * words.length)]; //random word
 
-  // Pick a random word
-  var word = words[Math.floor(Math.random() * words.length)];
-
-
+// Create the Function
+    //Function to start the game (option)
 function start() {
+    alert ("NETFLIX and the Hangman")
+    alert ("NETFLIX SERIES  \n+---+\n  |       |\n  |      0\n  |     -+-\n  |       |\n  |      / \\  \n=========")
     let playerChoice = prompt ("What would you like to do ? \nSelect one of those option. \n P=Play \n R=Rules \n Q=Quit" ).toUpperCase();
     if(playerChoice === "P") {
         return (game());
@@ -22,20 +23,18 @@ function start() {
         return (start());
     }
     }
-
-
-  // Set up the answer array
-  function game() {
-  var answerArray = [];
+    //Function to launch the game
+function game() {
+    var answerArray = [];
   for (var i = 0; i < word.length; i++) {
     answerArray[i] = "_";
   }
 
-  var remainingLetters = word.length;
+    var remainingLetters = word.length;
 
-  // The game loop
-  while (remainingLetters > 0) {
-    // Show the player their progress
+
+    while (remainingLetters > 0) {
+
     alert(answerArray.join(" "));
 
     // Get a guess from the player
@@ -62,7 +61,7 @@ function start() {
   }
   
  
-  // Show the answer and congratulate the player
+  // Run the Function
   start();
   
   
