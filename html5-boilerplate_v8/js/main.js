@@ -1,31 +1,19 @@
-//TODO
-//-Quand l’utilisateur arrive sur la page index.html le jeu démarre
-//-Par défaut l’ordinateur choisit un mot au hasard dans une liste et 
-// affiche au joueur le mot à deviner sous forme de underscores.
-//-Le joueur peut rentrer une lettre
-//-L’ordinateur vérifie qu’une seule lettre a été rentrée et si cette lettre est présente dans le mot, 
-//remplace tous les underscores correspondant par la lettre avant de d’afficher à nouveau le mot. 
-//Si la lettre n’était pas présente le joueur perd un point
-//-Le joueur démarre à 7 point, s’il arrive à zéro, il a perdu, s’il trouve toutes les lettres du mot avant, il a gagné
+// Create an array of words
+var choices = ["P", "R", "Q"];
+var words = ["viking", "peaky blinder", "your honor", "stranger things", "lupin"];
 
-//VAR
-var choices = ["P","R","Q"];
-var wordList = ["viking", "peaky blinder", "your honor", "stranger things", "lupin"];
-var targetWord = ""
-var answer = [];
-var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-//LETTERS
-const letters = "abcdefghijklmnopqrstuvwxyz"
+  // Pick a random word
+  var word = words[Math.floor(Math.random() * words.length)];
 
-//FUNCTIONS
 
 function start() {
     let playerChoice = prompt ("What would you like to do ? \nSelect one of those option. \n P=Play \n R=Rules \n Q=Quit" ).toUpperCase();
     if(playerChoice === "P") {
-        alert ("Game Start");
+        return (game());
     }
     else if(playerChoice === "R") {
         alert ("Rules: \n* Play individually or in groups. \n* Select a letter of the alphabet. \n* If the letter is contained in the word you don't loose any point. \n* if not you loose a point. \n* The game continues until : you have point or the word is guessed. \n* You have only 7 points. \n* So good luck");
+        return (start());
     }
     else if(playerChoice === "Q") {
         window.close();
@@ -34,76 +22,48 @@ function start() {
         return (start());
     }
     }
-//-Par défaut l’ordinateur choisit un mot au hasard dans une liste
-    function generateWord() {
-        // Generate a random word from the wordList
-        let randomWord = Math.floor(Math.random() * (wordList.length));
-        return wordList[randomWord];
-      }
 
 
-    //GAME
-    start();
-    generateWord();
-    //Answer Array
-    for (var i=0; i<randomWord.length; i++) {
-        answer[i] = "_";
-    }
+  // Set up the answer array
+  function game() {
+  var answerArray = [];
+  for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+  }
 
-    var remainLetters = randomWord.length;
-    
-    //The Loop
-    while (remainLetters > 0){
-        //game code
-        //Player progress
-        //Player input
-        //update
-    }
+  var remainingLetters = word.length;
 
-    //Player progress 
-    alert(answer.join(" "));
+  // The game loop
+  while (remainingLetters > 0) {
+    // Show the player their progress
+    alert(answerArray.join(" "));
 
-    //Player input
-    var guess = prompt("Pick a letter if you dare or leave");
+    // Get a guess from the player
+    var guess = prompt("Guess a letter, or click Cancel to stop playing.");
     if (guess === null) {
-        break;
-    }
-    else if (guess.length !==1) {
-        alert("So you don't understand? PICK A LETTER ONLY");
-    }
-    else{
-        for (var j =0; j< randomWord.length; j++){
-            if (randomWord[j]===guess) {
-                answer [j] = guess;
-                remainLetters--;
-            }
+      // Exit the game loop
+      break;
+    } else if (guess.length !== 1) {
+      alert("Please enter a single letter.");
+    } else {
+      // Update the game state with the guess
+      for (var j = 0; j < word.length; j++) {
+        if (word[j] === guess) {
+          answerArray[j] = guess;
+          remainingLetters--;
         }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//-Le joueur peut rentrer une lettre
-    function playerLetter() {
-        do {
-          var letter = prompt("Choose a letter ".toLowerCase());
-        }
-        while (!lettes.includes(letter));
-        return letter;
       }
-      playerLetter()
+    }
 
-    
+  // The end of the game loop
+  }
+    alert(answerArray.join(" "));
+    alert("Good job! The answer was " + word);
+  }
+  
+ 
+  // Show the answer and congratulate the player
+  start();
+  
+  
+  
