@@ -1,5 +1,4 @@
 // Create the VAR
-var choices = ["P", "R", "Q"];
 var words = ["viking", "peaky blinder", "your honor", "stranger things", "lupin", "ghotam", "ragnarok", "norsemen", "titans", "the rain", "the last kingdom", "family business", " spartacus", "sex education", "riverdale", "you", "the walking dead", "snow piercer", "outlander", "the witcher", "the sinner", "umbrella academy", "cobra kai", "lucifer", "homeland", "american horror story"];
 var word = words[Math.floor(Math.random() * words.length)]; //random word
 var playerscore = 7;
