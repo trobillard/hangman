@@ -2,7 +2,8 @@
 var choices = ["P", "R", "Q"];
 var words = ["viking", "peaky blinder", "your honor", "stranger things", "lupin", "ghotam", "ragnarok", "norsemen", "titans", "the rain", "the last kingdom", "family business", " spartacus", "sex education", "riverdale", "you", "the walking dead", "snow piercer", "outlander", "the witcher", "the sinner", "umbrella academy", "cobra kai", "lucifer", "homeland", "american horror story"];
 var word = words[Math.floor(Math.random() * words.length)]; //random word
-var playerscore = 7;
+var playerScore = 7;
+var playerResult =[];
 
 // Create the Function
     //Function rules
@@ -28,42 +29,58 @@ function start() {
         return (start());
     }
     }
-    //Function to launch the game
+  //Function to launch the game
 function game() {
     var answerArray = [];  //set up the answer array
   for (var i = 0; i < word.length; i++) {
         answerArray[i] = "_";
   }
     var remainingLetters = word.length;
-    //Game loop
+  //Game loop
 while (remainingLetters > 0) {
 
     alert(answerArray.join(" "));
 
-    // Get a guess from the player
+  // Get a guess from the player
     var guess = prompt("Guess a letter, or click Cancel to stop playing.");
     if (guess === null) {
-    // Exit the game loop
+  // Exit the game loop
       break;
     } 
     else if (guess.length !== 1) {
       alert("Please enter a single letter.");
     } 
     else {
-      // Update the game state with the guess
+  // Update the game state with the guess
       for (var j = 0; j < word.length; j++) {
         if (word[j] === guess) {
           answerArray[j] = guess;
+          alert(guess +"is in the word!")
           remainingLetters--;
+        }
+        else{
+          alert("You are wrong! You have" + (playerScore-=1));
+          return false;
         }
       }
     }
   // The end of the game loop
   }
+  // Tell if the player has won or not
+  while (playerScore >0){
+    if(Object.is(playerResult.toString(), answerArray.toString())){
+      break;
+    }
+    else if (playerScore===0){
+      alert("It's lost! The word was : "+ word)
+    }
+  }
+  if(Object.is(playerResult.toString(), answerArray.toString())){ 
   // show the answer 
     alert(answerArray.join(" "));
     alert("Good job! The answer was " + word);
    }
+  }
   
  
    //Function to keep playing
@@ -81,6 +98,6 @@ function reStart(){
   }
 
   // Run the Gme
-  start();
+start();
 reStart();
   
